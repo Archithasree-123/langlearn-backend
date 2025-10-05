@@ -1,0 +1,102 @@
+body {
+  background: linear-gradient(120deg, #b6e0fe 0%, #f8bbd0 100%);
+  min-height: 100vh;
+  margin: 0;
+  font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+.container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 1.2s ease-in forwards;
+  animation-delay: 0.4s;
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+.mic-button {
+  background: #fff;
+  border: none;
+  outline: none;
+  margin-top: 2rem;
+  margin-bottom: 1.4rem;
+  border-radius: 50%;
+  width: 85px;
+  height: 85px;
+  box-shadow: 0 4px 22px #faa9e5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: box-shadow 0.3s, transform 0.15s;
+  cursor: pointer;
+  position: relative;
+}
+.mic-button:active {
+  transform: scale(0.96);
+}
+.mic-button.listening {
+  box-shadow: 0 0 32px #90caf9, 0 0 12px #f8bbd0;
+  animation: pulse 1s infinite;
+}
+@keyframes pulse {
+  0% { box-shadow: 0 0 32px #64b5f6, 0 0 12px #e1bee7; }
+  40% { box-shadow: 0 0 72px #ab47bc, 0 0 44px #ff80ab; }
+  100% { box-shadow: 0 0 32px #64b5f6, 0 0 12px #e1bee7; }
+}
+.mic-icon {
+  display: block;
+  width: 40px;
+  height: 56px;
+  background: linear-gradient(180deg, #42a5f5, #ef9a9a 60%);
+  border-radius: 16px 16px 28px 28px;
+  position: relative;
+}
+
+.mic-icon:after {
+  content: '';
+  display: block;
+  position: absolute;
+  left: 50%;
+  top: 90%;
+  width: 18px;
+  height: 10px;
+  background: #c62828;
+  border-radius: 0 0 22px 22px;
+  transform: translate(-50%, 0);
+}
+
+.transcript-box {
+  min-height: 54px;
+  min-width: 260px;
+  background: rgba(255,255,255,0.85);
+  border-radius: 1.1em;
+  margin-top: 1.7rem;
+  font-size: 1.25rem;
+  color: #7b1fa2;
+  padding: 1.1em 1.5em;
+  opacity: 0;
+  transform: translateY(25px);
+  transition: opacity 0.7s, transform 0.5s;
+  box-shadow: 0 2px 18px #e1bee7a0;
+}
+.transcript-box.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.blink {
+  animation: blink 1s steps(1) infinite;
+}
+@keyframes blink {
+  0%, 50%, 100% { opacity: 1; }
+  25%, 75% { opacity: 0.1; }
+}
